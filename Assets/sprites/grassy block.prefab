@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8388119800911790123}
   - component: {fileID: 8124264165530963432}
   - component: {fileID: 5354790258679571952}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: grassy block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
