@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using TreeEditor;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PhysicsCharacterController : MonoBehaviour
 {
+    public SpriteRenderer mySpriteRenderer = null; 
+    public List<Sprite> CharacterSprites = new List<Sprite>();
+    public int HP = 0;
+
     //Refrence to rigidbody on same object
     public Rigidbody2D myRigidBody = null;
 
@@ -23,10 +28,23 @@ public class PhysicsCharacterController : MonoBehaviour
     private float JumpStartingY = 0.0f;
     //Movement
     public float MovementSpeedPerSecond = 10.0f; //Movement Speed
-
-
     private void Update()
     {
+        //copy our hp-1 to our new variable
+        int HPcopy = HP-1;
+        //if hpcopy is less than zero, set it to zero
+        if (HPcopy < 0)
+        {
+            HPcopy = 0;
+        }
+        //larger or equal to the number of different sprites in charactersprites, set it to number -1
+        if (HPcopy >= CharacterSprites.Count)
+        {
+            HPcopy = CharacterSprites.Count -1;
+        }
+        // assign correct sprite to renderer component
+        mySpriteRenderer.sprite = CharacterSprites[HPcopy];
+        
         if (Input.GetKeyDown(KeyCode.Space) && JumpingState == characterstate.Grounded)
         {
             JumpingState = characterstate.Jumping; //Set character to jumping
