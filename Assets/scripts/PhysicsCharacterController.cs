@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class PhysicsCharacterController : MonoBehaviour
 {
+    public GameObject mySmallGroundCheck = null;
+    public GameObject myBigGroundCheck = null;
+
     public SpriteRenderer mySpriteRenderer = null; 
     public List<Sprite> CharacterSprites = new List<Sprite>();
     public int HP = 0;
@@ -30,6 +33,18 @@ public class PhysicsCharacterController : MonoBehaviour
     public float MovementSpeedPerSecond = 10.0f; //Movement Speed
     private void Update()
     {
+        if (HP <= 0)
+        {
+            //try to get a reference to sceneloaderscript on this gameobject
+            Sceneloader mySceneLoader = gameObject.GetComponent<Sceneloader>();
+            //check if we succeded
+            if (mySceneLoader != null)
+            {
+                //change to scene "game over"
+                mySceneLoader.LoadScene("Game Over");
+            }
+        }
+
         //copy our hp-1 to our new variable
         int HPcopy = HP-1;
         //if hpcopy is less than zero, set it to zero
@@ -41,6 +56,16 @@ public class PhysicsCharacterController : MonoBehaviour
         if (HPcopy >= CharacterSprites.Count)
         {
             HPcopy = CharacterSprites.Count -1;
+        }
+        if(HPcopy == 0)
+        {
+            mySmallGroundCheck.SetActive(true);
+            myBigGroundCheck.SetActive(false);
+        }
+        else
+        {
+            mySmallGroundCheck.SetActive(false);
+            myBigGroundCheck.SetActive(true);
         }
         // assign correct sprite to renderer component
         mySpriteRenderer.sprite = CharacterSprites[HPcopy];
@@ -96,5 +121,10 @@ public class PhysicsCharacterController : MonoBehaviour
         }
         myRigidBody.velocity = characterVelocity;
 
+    }
+
+    public void TakeDamage(int aHPValue)
+    {
+        HP += aHPValue;
     }
 }

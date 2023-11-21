@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 2623581345854269876}
   - component: {fileID: 6869775142708862030}
   - component: {fileID: -3073539246318181230}
+  - component: {fileID: -3857242586042430916}
   m_Layer: 0
   m_Name: grumpyjackass
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37db67423a21dfe48b414c035be5de1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HP: 0
   myRigidBody: {fileID: -3073539246318181230}
   MovementSpeedPerSecond: 10
   MovementSign: 1
@@ -175,6 +177,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-3857242586042430916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054138144891646515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 801354e3428468145939a8952016d970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsPlayer: 0
+  DamageValue: -1
 --- !u!1 &2045576326828116238
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,6 +202,7 @@ GameObject:
   - component: {fileID: 9185964704517107741}
   - component: {fileID: 4376437974009395823}
   - component: {fileID: 7213465569976922089}
+  - component: {fileID: 6121995484860578231}
   m_Layer: 0
   m_Name: Collision Right
   m_TagString: Untagged
@@ -220,7 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d72d1dec7b54d2b45ae372f0f6cf553e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myEnemyScript: {fileID: 0}
+  myEnemyScript: {fileID: 2623581345854269876}
 --- !u!61 &7213465569976922089
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -266,3 +283,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 12}
   m_EdgeRadius: 0
+--- !u!114 &6121995484860578231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045576326828116238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 801354e3428468145939a8952016d970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsPlayer: 0
+  DamageValue: -1

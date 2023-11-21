@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class enemy1 : MonoBehaviour
 {
+    public int HP = 0;
+    public void TakeDamage(int aHPValue)
+    {
+        HP += aHPValue;
+
+        if(HP <= 0)
+        {
+            GameObject.Destroy(gameObject);
+        }
+    }
+
     public Rigidbody2D myRigidBody = null;
 
     public float MovementSpeedPerSecond = 10.0f;
